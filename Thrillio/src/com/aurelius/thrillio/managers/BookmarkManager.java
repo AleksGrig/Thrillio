@@ -1,12 +1,15 @@
 package com.aurelius.thrillio.managers;
 
+import com.aurelius.thrillio.daos.BookmarkDao;
 import com.aurelius.thrillio.entities.Book;
+import com.aurelius.thrillio.entities.Bookmark;
 import com.aurelius.thrillio.entities.Movie;
 import com.aurelius.thrillio.entities.WebLink;
 
 public class BookmarkManager {
 
 	private static BookmarkManager instance = new BookmarkManager();
+	private static BookmarkDao dao = new BookmarkDao();
 
 	private BookmarkManager() {
 	}
@@ -50,5 +53,9 @@ public class BookmarkManager {
 		weblink.setUrl(url);
 		weblink.setHost(host);
 		return weblink;
+	}
+
+	public Bookmark[][] getBookmarks() {
+		return dao.getBookmarks();
 	}
 }
