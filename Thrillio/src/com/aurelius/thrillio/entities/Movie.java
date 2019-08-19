@@ -55,4 +55,14 @@ public class Movie extends Bookmark {
 		return "Movie [releaseYear=" + releaseYear + ", cast=" + Arrays.toString(cast) + ", directors="
 				+ Arrays.toString(directors) + ", genre=" + genre + ", imdbRating=" + imdbRating + "]";
 	}
+
+	@Override
+	public boolean isKidFreindlyEligible() {
+		switch (genre) {
+		case "Horror":
+		case "Thrillers":
+			return false;
+		}
+		return true;
+	}
 }
