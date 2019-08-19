@@ -123,3 +123,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/java,windows,eclipse
+
+# TestNG test-output
+/test-output
