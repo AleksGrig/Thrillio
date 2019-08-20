@@ -126,3 +126,8 @@ $RECYCLE.BIN/
 
 # TestNG test-output
 /test-output
+
+# Apache Commons Lang
+/commons-lang3-3.9
+*.txt
+*.md
