@@ -5,6 +5,7 @@ import com.aurelius.thrillio.constants.UserType;
 import com.aurelius.thrillio.controllers.BookmarkController;
 import com.aurelius.thrillio.entities.Bookmark;
 import com.aurelius.thrillio.entities.User;
+import com.aurelius.thrillio.partner.Shareable;
 
 public class View {
 
@@ -22,18 +23,31 @@ public class View {
 					}
 				}
 
-				// Mark as kid-friendly
 				if (user.getUserType().equals(UserType.EDITOR) || user.getUserType().equals(UserType.CHIEF_EDITOR)) {
+					// Mark as kid-friendly
 					if (bookmark.isKidFreindlyEligible()
 							&& bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.UNKNOWN)) {
 						String kidFriendlyStatus = getKidFriendlyStatusDecision(bookmark);
 						if (!kidFriendlyStatus.equals(KidFriendlyStatus.UNKNOWN)) {
 							BookmarkController.getInstance().setKidFriendlyStatus(user, kidFriendlyStatus, bookmark);
 						}
+
+						// Sharing kid-friendly bookmark
+						if (bookmark.getKidFriendlyStatus().equals(KidFriendlyStatus.APPROVED)
+								&& bookmark instanceof Shareable) {
+							boolean isShared = getShareDecision();
+							if (isShared) {
+								BookmarkController.getInstance().share(user, bookmark);
+							}
+						}
 					}
 				}
 			}
 		}
+	}
+
+	private static boolean getShareDecision() {
+		return Math.random() < 0.5 ? true : false;
 	}
 
 	private static String getKidFriendlyStatusDecision(Bookmark bookmark) {
