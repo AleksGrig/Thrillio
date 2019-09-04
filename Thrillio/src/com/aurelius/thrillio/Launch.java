@@ -1,5 +1,7 @@
 package com.aurelius.thrillio;
 
+import java.util.List;
+
 import com.aurelius.thrillio.entities.Bookmark;
 import com.aurelius.thrillio.entities.User;
 import com.aurelius.thrillio.managers.BookmarkManager;
@@ -7,8 +9,8 @@ import com.aurelius.thrillio.managers.UserManager;
 
 public class Launch {
 
-	private static User[] users;
-	private static Bookmark[][] bookmarks;
+	private static List<User> users;
+	private static List<List<Bookmark>> bookmarks;
 
 	private static void loadData() {
 		System.out.println("Loading data...");
@@ -29,7 +31,7 @@ public class Launch {
 	}
 
 	private static void printBookmarkData() {
-		for (Bookmark[] bookmarkList : bookmarks) {
+		for (List<Bookmark> bookmarkList : bookmarks) {
 			for (Bookmark bookmark : bookmarkList) {
 				System.out.println(bookmark);
 			}
@@ -37,7 +39,6 @@ public class Launch {
 	}
 
 	private static void start() {
-		// System.out.println("\nBookmarking...");
 		for (User user : users) {
 			View.browse(user, bookmarks);
 		}

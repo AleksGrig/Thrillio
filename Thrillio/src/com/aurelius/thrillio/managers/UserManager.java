@@ -1,5 +1,7 @@
 package com.aurelius.thrillio.managers;
 
+import java.util.List;
+
 import com.aurelius.thrillio.daos.UserDao;
 import com.aurelius.thrillio.entities.User;
 
@@ -28,7 +30,7 @@ public class UserManager {
 		return user;
 	}
 
-	public User[] getUsers() {
+	public List<User> getUsers() {
 		return dao.getUsers();
 	}
 }
