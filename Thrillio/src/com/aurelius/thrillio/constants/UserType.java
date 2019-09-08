@@ -1,11 +1,16 @@
 package com.aurelius.thrillio.constants;
 
-public class UserType {
+public enum UserType {
 
-	private UserType() {
+	USER("user"), EDITOR("editor"), CHIEF_EDITOR("chief_editor");
+
+	private UserType(String user) {
+		this.user = user;
 	}
 
-	public static final String USER = "user";
-	public static final String EDITOR = "editor";
-	public static final String CHIEF_EDITOR = "chiefeditor";
+	private String user;
+
+	public String getUser() {
+		return user;
+	}
 }

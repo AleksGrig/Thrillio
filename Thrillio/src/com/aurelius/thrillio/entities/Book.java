@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.aurelius.thrillio.constants.BookGenre;
 import com.aurelius.thrillio.partner.Shareable;
 
 public class Book extends Bookmark implements Shareable {
@@ -11,7 +12,7 @@ public class Book extends Bookmark implements Shareable {
 	private int publicationYear;
 	private String publisher;
 	private String[] authors;
-	private String genre;
+	private BookGenre genre;
 	private double amazonRating;
 
 	public int getPublicationYear() {
@@ -38,11 +39,11 @@ public class Book extends Bookmark implements Shareable {
 		this.authors = authors;
 	}
 
-	public String getGenre() {
+	public BookGenre getGenre() {
 		return genre;
 	}
 
-	public void setGenre(String genre) {
+	public void setGenre(BookGenre genre) {
 		this.genre = genre;
 	}
 
@@ -63,9 +64,10 @@ public class Book extends Bookmark implements Shareable {
 	@Override
 	public boolean isKidFreindlyEligible() {
 		switch (genre) {
-		case "Philosophy":
-		case "Self help":
+		case PHILOSOPHY:
+		case SELF_HELP:
 			return false;
+		default:
 		}
 		return true;
 	}
