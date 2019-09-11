@@ -4,8 +4,14 @@ import com.aurelius.thrillio.partner.Shareable;
 
 public class WebLink extends Bookmark implements Shareable {
 
+	public enum DownloadStatus {
+		NOT_ATTEMPTED, SUCCESS, FAILED, NOT_ELIGIBLE;
+	}
+
 	private String url;
 	private String host;
+	private String htmlPage;
+	private DownloadStatus downloadStatus = DownloadStatus.NOT_ATTEMPTED;
 
 	public String getUrl() {
 		return url;
@@ -47,5 +53,21 @@ public class WebLink extends Bookmark implements Shareable {
 		builder.append("<host>").append(host).append("</host>");
 		builder.append("<item>");
 		return builder.toString();
+	}
+
+	public String getHtmlPage() {
+		return htmlPage;
+	}
+
+	public void setHtmlPage(String htmlPage) {
+		this.htmlPage = htmlPage;
+	}
+
+	public DownloadStatus getDownloadStatus() {
+		return downloadStatus;
+	}
+
+	public void setDownloadStatus(DownloadStatus downloadStatus) {
+		this.downloadStatus = downloadStatus;
 	}
 }

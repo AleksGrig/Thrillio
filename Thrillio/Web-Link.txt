@@ -3,3 +3,5 @@
 2002	Interface vs Abstract Class	http://mindprod.com/jgloss/interfacevsabstract.html	http://mindprod.com	unknown
 2003	NIO tutorial by Greg Travis	http://cs.brown.edu/courses/cs161/papers/j-nio-ltr.pdf	http://cs.brown.edu	unknown
 2004	Virtual Hosting and Tomcat	http://tomcat.apache.org/tomcat-6.0-doc/virtual-hosting-howto.html	http://tomcat.apache.org	unknown
+2005	Google Search Engine	http://google.com	http://google.com unknown
+2006	Portnov Computer School	http://portnov.net/	http://portnov.net/	unknown

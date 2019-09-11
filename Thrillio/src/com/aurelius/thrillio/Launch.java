@@ -2,6 +2,7 @@ package com.aurelius.thrillio;
 
 import java.util.List;
 
+import com.aurelius.thrillio.backgroundjobs.WebpageDownloaderTask;
 import com.aurelius.thrillio.entities.Bookmark;
 import com.aurelius.thrillio.entities.User;
 import com.aurelius.thrillio.managers.BookmarkManager;
@@ -44,8 +45,16 @@ public class Launch {
 		}
 	}
 
+	private static void runDownloaderjob() {
+		WebpageDownloaderTask task = new WebpageDownloaderTask(true);
+		(new Thread(task)).start();
+	}
+
 	public static void main(String[] args) {
 		loadData();
 		start();
+
+		// Background jobs
+		runDownloaderjob();
 	}
 }

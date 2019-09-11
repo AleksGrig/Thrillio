@@ -16,11 +16,6 @@ import com.aurelius.thrillio.util.IOUtil;
 
 public class DataStore {
 
-//	public static final int USER_BOOKMARK_LIMIT = 5;
-//	public static final int BOOKMARK_COUNT_PER_TYPE = 5;
-//	public static final int BOOKMARK_TYPES_COUNT = 3;
-//	public static final int TOTAL_USER_COUNT = 5;
-
 	private static List<User> users = new ArrayList<>();
 	private static List<List<Bookmark>> bookmarks = new ArrayList<>();
 	private static List<UserBookmark> userBookmarks = new ArrayList<>();
