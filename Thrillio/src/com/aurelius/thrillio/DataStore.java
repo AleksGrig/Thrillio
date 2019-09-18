@@ -38,8 +38,8 @@ public class DataStore {
 	public static void loadData() {
 		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/thrillio?useSSL=false", "root",
 				"77192806"); Statement stmt = conn.createStatement();) {
-			loadUsers(stmt); // Student is expected to implement this method
-			loadWebLinks(stmt); // Student is expected to implement this method
+			loadUsers(stmt);
+			loadWebLinks(stmt);
 			loadMovies(stmt);
 			loadBooks(stmt);
 		} catch (SQLException e) {
