@@ -75,4 +75,48 @@ public class BookmarkDao {
 		}
 		return result;
 	}
+
+	public void updateKidFriendlyStatus(Bookmark bookmark) {
+		int kidFriendlyStatus = bookmark.getKidFriendlyStatus().ordinal();
+		long userId = bookmark.getKidFriendlyMarkedBy().getId();
+
+		String tableToUpdate = "book";
+		if (bookmark instanceof Movie) {
+			tableToUpdate = "movie";
+		} else if (bookmark instanceof WebLink) {
+			tableToUpdate = "weblink";
+		}
+
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/thrillio?useSSL=false", "root",
+				"77192806"); Statement stmt = conn.createStatement();) {
+
+			String query = "update " + tableToUpdate + " set kid_friendly_status = " + kidFriendlyStatus
+					+ ", kid_friendly_marked_by = " + userId + " where id = " + bookmark.getId();
+			System.out.println("query (updateKidFriendlyStatus): " + query);
+			stmt.executeUpdate(query);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void sharedByInfo(Bookmark bookmark) {
+		long userId = bookmark.getSharedBy().getId();
+
+		String tableToUpdate = "book";
+		if (bookmark instanceof WebLink) {
+			tableToUpdate = "weblink";
+		}
+
+		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/thrillio?useSSL=false", "root",
+				"77192806"); Statement stmt = conn.createStatement();) {
+
+			String query = "update " + tableToUpdate + " set shared_by = " + userId + " where id = " + bookmark.getId();
+			System.out.println("query (updateSharedBy): " + query);
+			stmt.executeUpdate(query);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

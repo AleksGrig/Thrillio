@@ -46,13 +46,13 @@ public class View {
 	}
 
 	private static boolean getShareDecision() {
-		return Math.random() < 0.25 ? true : false;
+		return Math.random() < 0.75 ? true : false;
 	}
 
 	private static KidFriendlyStatus getKidFriendlyStatusDecision(Bookmark bookmark) {
 		double random = Math.random();
-		return random < 0.4 ? KidFriendlyStatus.APPROVED
-				: (random >= 0.4 && random < 0.6) ? KidFriendlyStatus.REJECTED : KidFriendlyStatus.UNKNOWN;
+		return random < 0.7 ? KidFriendlyStatus.APPROVED
+				: (random >= 0.7 && random < 0.8) ? KidFriendlyStatus.REJECTED : KidFriendlyStatus.UNKNOWN;
 	}
 
 	private static boolean getBookmarkDecision(Bookmark bookmark) {
