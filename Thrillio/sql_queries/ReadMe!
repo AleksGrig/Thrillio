@@ -1,2 +1,2 @@
 Urls are corrupted in weblink table! Update them with the same links. 
-In DataStore and BookmarkDao password is "77192806", change it with your mysql password.
+In DataStore and BookmarkDao credentials are "root" and "77192806", change it with your mysql password.

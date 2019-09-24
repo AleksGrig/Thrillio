@@ -22,7 +22,8 @@ public class BookmarkDao {
 
 	public void saveUserBookmark(UserBookmark userBookmark) {
 		DataStore.add(userBookmark);
-		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/thrillio?useSSL=false", "root",
+		try (Connection conn = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/thrillio?useSSL=false&serverTimezone=UTC", "root",
 				"77192806"); Statement stmt = conn.createStatement();) {
 			if (userBookmark.getBookmark() instanceof Book) {
 				saveUserBook(userBookmark, stmt);
@@ -87,7 +88,8 @@ public class BookmarkDao {
 			tableToUpdate = "weblink";
 		}
 
-		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/thrillio?useSSL=false", "root",
+		try (Connection conn = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/thrillio?useSSL=false&serverTimezone=UTC", "root",
 				"77192806"); Statement stmt = conn.createStatement();) {
 
 			String query = "update " + tableToUpdate + " set kid_friendly_status = " + kidFriendlyStatus
@@ -108,7 +110,8 @@ public class BookmarkDao {
 			tableToUpdate = "weblink";
 		}
 
-		try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/thrillio?useSSL=false", "root",
+		try (Connection conn = DriverManager.getConnection(
+				"jdbc:mysql://localhost:3306/thrillio?useSSL=false&serverTimezone=UTC", "root",
 				"77192806"); Statement stmt = conn.createStatement();) {
 
 			String query = "update " + tableToUpdate + " set shared_by = " + userId + " where id = " + bookmark.getId();
